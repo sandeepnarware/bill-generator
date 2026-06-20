@@ -248,6 +248,7 @@ select.form-input { appearance: auto; }
 .t4-thumb { background: linear-gradient(135deg, #065f46, #059669); }
 .t5-thumb { background: linear-gradient(135deg, #7c3aed, #a78bfa); }
 .t6-thumb { background: linear-gradient(135deg, #ea580c, #f97316); }
+.t7-thumb { background: #ffffff; border: 1px solid #cbd5e1; color: #1e293b; font-family: 'Courier New', monospace; }
 
 /* ===== Preview Panel ===== */
 .preview-panel {
@@ -547,6 +548,82 @@ select.form-input { appearance: auto; }
 .bill-t6 .bill-table th { background: #fff7ed; color: #ea580c; font-weight: 600; }
 .bill-t6 .bill-table td { border-bottom-color: #fff7ed; }
 .bill-t6 .bill-footer { padding: 8px 20px; color: #9a3412; }
+
+/* ===== Template 7: IndianOil Receipt (exact-match thermal printout) ===== */
+.bill-t7 {
+  font-family: 'Courier New', Courier, monospace;
+  padding: 8px;
+  color: #111;
+}
+.bill-t7 .bill-inner {
+  max-width: 320px;
+  margin: 0 auto;
+  padding: 16px 20px 20px;
+  background: #fff;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+.bill-t7 .t7-logo { text-align: center; margin-bottom: 2px; }
+.bill-t7 .t7-emblem {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 4px;
+  border: 2px solid #111;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 4px;
+  font-size: 11px;
+  line-height: 1.1;
+}
+.bill-t7 .t7-logo-img {
+  height: 56px;
+  margin: 0 auto 4px;
+  display: block;
+  object-fit: contain;
+}
+.bill-t7 .t7-brand {
+  text-align: center;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+.bill-t7 .t7-welcome {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 700;
+  margin: 4px 0 8px;
+}
+.bill-t7 .t7-dealer {
+  text-align: center;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+.bill-t7 .t7-dealer-addr {
+  text-align: center;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+.bill-t7 .t7-gap { height: 12px; }
+.bill-t7 .t7-row {
+  display: grid;
+  grid-template-columns: 104px 14px 1fr;
+  font-size: 14px;
+  line-height: 1.55;
+}
+.bill-t7 .t7-label { white-space: nowrap; }
+.bill-t7 .t7-colon { text-align: center; }
+.bill-t7 .t7-val { word-break: break-word; }
+.bill-t7 .t7-thanks {
+  text-align: center;
+  font-size: 14px;
+  font-weight: 700;
+  margin-top: 16px;
+}
 
 /* ===== Modal ===== */
 .modal-overlay {

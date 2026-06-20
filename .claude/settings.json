@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node --check app.js)",
+      "Bash(command -v chrome chromium google-chrome msedge)",
+      "Read(//c/Program Files/Google/Chrome/Application/**)",
+      "Read(//c/Program Files \\(x86\\)/Microsoft/Edge/Application/**)",
+      "Bash(npm ls *)",
+      "Bash(cat > *)"
+    ],
+    "additionalDirectories": [
+      "D:\\system-temp\\claude\\d--pet-projects-bill-generator\\2c962a5b-86a6-4847-8f50-bd7d712e5336\\scratchpad"
+    ]
+  }
+}

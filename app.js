@@ -12,6 +12,22 @@ function formatDate(dateStr) {
   const d = new Date(dateStr + 'T00:00:00');
   return d.toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' });
 }
+function formatShortDate(dateStr) {
+  if (!dateStr) return '';
+  const d = new Date(dateStr + 'T00:00:00');
+  const dd = String(d.getDate()).padStart(2, '0');
+  const mm = String(d.getMonth() + 1).padStart(2, '0');
+  const yy = String(d.getFullYear()).slice(-2);
+  return `${dd}/${mm}/${yy}`;
+}
+/* Zero-padded fixed-width number to mimic thermal receipt printout (e.g. 80.33 -> "080.33") */
+function padNum(value, intLen, decLen) {
+  const num = parseFloat(value) || 0;
+  const fixed = num.toFixed(decLen);
+  const parts = fixed.split('.');
+  const intStr = parts[0].padStart(intLen, '0');
+  return decLen ? intStr + '.' + parts[1] : intStr;
+}
 function numberToWords(num) {
   if (!num || isNaN(num)) return '';
   const a = ['','One ','Two ','Three ','Four ','Five ','Six ','Seven ','Eight ','Nine ','Ten ','Eleven ','Twelve ','Thirteen ','Fourteen ','Fifteen ','Sixteen ','Seventeen ','Eighteen ','Nineteen '];
@@ -67,13 +83,23 @@ function getFormData() {
     fuelQty,
     totalAmount,
     billDate: getVal('billDate') ? formatDate(getVal('billDate')) : formatDate(getDate()),
+    billDateShort: getVal('billDate') ? formatShortDate(getVal('billDate')) : formatShortDate(getDate()),
     billTime: getVal('billTime') || '10:30',
     fuelType: getVal('fuelType') || 'Petrol',
     customerName: getVal('customerName') || 'Customer',
     vehicleNumber: getVal('vehicleNumber') || '',
     vehicleType: getVal('vehicleType') || 'Car',
     amountWords: numberToWords(totalAmount),
-    fileName: getVal('downloadFileName') || 'Fuel-Bill-Receipt'
+    fileName: getVal('downloadFileName') || 'Fuel-Bill-Receipt',
+    // IndianOil receipt template (Template 7) fields
+    receiptNo: getVal('receiptNo'),
+    localId: getVal('localId'),
+    product: getVal('product') || getVal('fuelType') || 'Petrol',
+    density: getVal('density'),
+    presetType: getVal('presetType') || 'Amount',
+    mobileNo: getVal('mobileNo'),
+    lstNo: getVal('lstNo'),
+    vatNo: getVal('vatNo')
   };
 }
 
@@ -345,6 +371,54 @@ function renderTemplate6(d) {
   </div>`;
 }
 
+/* ===== Template 7: IndianOil Receipt (exact-match thermal receipt) ===== */
+function renderTemplate7(d) {
+  const dealer = (d.stationName || 'FUEL STATION').toUpperCase();
+  const addrLines = (d.stationAddress || '')
+    .split(/\r?\n/)
+    .map(l => l.trim())
+    .filter(Boolean);
+  const row = (label, value) =>
+    `<div class="t7-row"><span class="t7-label">${label}</span><span class="t7-colon">:</span><span class="t7-val">${value || ''}</span></div>`;
+  return `<div class="bill bill-t7">
+    <div class="bill-inner">
+      <div class="t7-logo">
+        ${d.logo
+          ? `<img src="${d.logo}" class="t7-logo-img" alt="logo">`
+          : `<div class="t7-emblem"><span>इंडियनऑयल</span></div>`}
+        <div class="t7-brand">IndianOil</div>
+      </div>
+      <div class="t7-welcome">Welcomes You</div>
+      <div class="t7-dealer">${dealer}</div>
+      ${addrLines.map(l => `<div class="t7-dealer-addr">${l.toUpperCase()}</div>`).join('')}
+      <div class="t7-gap"></div>
+      ${d.telNo ? row('Tel. No.', d.telNo) : ''}
+      <div class="t7-gap"></div>
+      ${row('Receipt No.', d.receiptNo)}
+      ${row('Local ID', d.localId)}
+      ${row('FIP No.', d.fipNo)}
+      ${row('Nozzle No.', d.nozzleNo)}
+      ${row('Product', d.product)}
+      ${row('Density', d.density)}
+      <div class="t7-gap"></div>
+      ${row('Preset Type', d.presetType)}
+      ${row('Rate', padNum(d.fuelRate, 3, 2))}
+      ${row('Volume', padNum(d.fuelQty, 5, 2))}
+      ${row('Total', padNum(d.totalAmount, 5, 2))}
+      <div class="t7-gap"></div>
+      ${row('Vehicle No.', d.vehicleNumber || 'Not Enterd')}
+      ${row('Mobile NO', d.mobileNo || 'Not Enterd')}
+      <div class="t7-gap"></div>
+      <div class="t7-row"><span class="t7-label">Date</span><span class="t7-colon">:</span><span class="t7-val">${d.billDateShort} Time: ${d.billTime}</span></div>
+      <div class="t7-gap"></div>
+      ${row('CST NO', d.cstTin)}
+      ${row('LST NO', d.lstNo)}
+      ${row('VAT NO', d.vatNo)}
+      <div class="t7-thanks">Thank You! Please Visit Again..</div>
+    </div>
+  </div>`;
+}
+
 /* ===== Render Dispatcher ===== */
 function renderBill(templateNum, data) {
   const renderers = {
@@ -353,7 +427,8 @@ function renderBill(templateNum, data) {
     3: renderTemplate3,
     4: renderTemplate4,
     5: renderTemplate5,
-    6: renderTemplate6
+    6: renderTemplate6,
+    7: renderTemplate7
   };
   const fn = renderers[templateNum] || renderTemplate1;
   return fn(data);
