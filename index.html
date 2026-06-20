@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fuel Bill Generator</title>
+  <title>IndianOil Fuel Bill Generator</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Playfair+Display:wght@700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header class="header">
     <div class="header-inner">
       <a href="." class="logo">
-        <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="8" fill="#2563eb"/><path d="M10 22V10h4l4 6 4-6h4v12h-4V16l-4 6-4-6v6h-4z" fill="#fff"/></svg>
-        <span>BillGenerator</span>
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="8" fill="#02164f"/><circle cx="16" cy="16" r="9" fill="#f37022"/><rect x="6" y="13" width="20" height="6" fill="#02164f"/></svg>
+        <span>IndianOil Bill</span>
       </a>
       <nav class="nav-links">
         <a href=".">Home</a>
@@ -28,80 +28,51 @@
 
         <!-- LEFT: Form -->
         <section class="form-panel">
-          <h1 class="page-title">Fuel Bill Generator</h1>
-          <p class="page-subtitle">Generate professional fuel receipts and petrol bills</p>
+          <h1 class="page-title">IndianOil Fuel Bill Generator</h1>
+          <p class="page-subtitle">Fill in the details and download an IndianOil-style fuel receipt</p>
 
-          <!-- Template Selector -->
+          <!-- Station Details -->
           <div class="section">
-            <h2 class="section-title">Select Template</h2>
-            <div class="template-grid" id="templateGrid">
-              <button class="template-card active" data-template="1">
-                <div class="template-thumb t1-thumb">T1</div>
-                <span>Classic</span>
-              </button>
-              <button class="template-card" data-template="2">
-                <div class="template-thumb t2-thumb">T2</div>
-                <span>Minimal</span>
-              </button>
-              <button class="template-card" data-template="3">
-                <div class="template-thumb t3-thumb">T3</div>
-                <span>Corporate</span>
-              </button>
-              <button class="template-card" data-template="4">
-                <div class="template-thumb t4-thumb">T4</div>
-                <span>Tax Invoice</span>
-              </button>
-              <button class="template-card" data-template="5">
-                <div class="template-thumb t5-thumb">T5</div>
-                <span>Receipt</span>
-              </button>
-              <button class="template-card" data-template="6">
-                <div class="template-thumb t6-thumb">T6</div>
-                <span>Modern</span>
-              </button>
-              <button class="template-card" data-template="7">
-                <div class="template-thumb t7-thumb">T7</div>
-                <span>IndianOil</span>
-              </button>
-            </div>
-          </div>
-
-          <!-- Fuel Station Details -->
-          <div class="section">
-            <h2 class="section-title">Fuel Station Details</h2>
+            <h2 class="section-title">Station Details</h2>
             <div class="form-group">
-              <label for="stationName">Fuel Station Name <span class="req">*</span></label>
-              <input type="text" id="stationName" class="form-input" placeholder="e.g. Indian Oil Petrol Pump" value="Bharat Petroleum Corp">
+              <label for="stationName">Station / Dealer Name <span class="req">*</span></label>
+              <input type="text" id="stationName" class="form-input" placeholder="e.g. GURUPRASAD SERVICES" value="GURUPRASAD SERVICES">
             </div>
             <div class="form-group">
-              <label for="stationAddress">Fuel Station Address <span class="req">*</span></label>
-              <textarea id="stationAddress" class="form-input form-textarea" rows="2" placeholder="e.g. 123, MG Road, Mumbai">123, MG Road, Andheri East, Mumbai - 400093</textarea>
+              <label for="stationAddress">Station Address <span class="req">*</span></label>
+              <textarea id="stationAddress" class="form-input form-textarea" rows="2" placeholder="e.g. S V ROAD MALAD&#10;W-MUMBAI 64">S V ROAD MALAD
+W-MUMBAI 64</textarea>
             </div>
             <div class="form-row">
               <div class="form-group">
-                <label for="telNo">Tel No</label>
-                <input type="text" id="telNo" class="form-input" placeholder="Phone number" value="022-12345678">
+                <label for="telNo">Tel. No.</label>
+                <input type="text" id="telNo" class="form-input" placeholder="e.g. 28805142" value="28805142">
               </div>
               <div class="form-group">
-                <label for="fccId">FCC Id</label>
-                <input type="text" id="fccId" class="form-input" placeholder="FCC ID" value="FCC/2024/12345">
+                <label for="receiptNo">Receipt No.</label>
+                <input type="text" id="receiptNo" class="form-input" placeholder="e.g. J1670" value="J1670">
               </div>
             </div>
             <div class="form-row">
               <div class="form-group">
-                <label for="fipNo">FIP No</label>
-                <input type="text" id="fipNo" class="form-input" placeholder="FIP number" value="FIP/45678">
+                <label for="localId">Local ID</label>
+                <input type="text" id="localId" class="form-input" placeholder="e.g. 00024735" value="00024735">
               </div>
               <div class="form-group">
-                <label for="nozzleNo">Nozzle No</label>
-                <input type="text" id="nozzleNo" class="form-input" placeholder="Nozzle number" value="N-03">
+                <label for="fipNo">FIP No.</label>
+                <input type="text" id="fipNo" class="form-input" placeholder="e.g. 07" value="07">
               </div>
+            </div>
+            <div class="form-group">
+              <label for="nozzleNo">Nozzle No.</label>
+              <input type="text" id="nozzleNo" class="form-input" placeholder="e.g. 03" value="03">
             </div>
           </div>
 
           <!-- Logo -->
           <div class="section">
             <h2 class="section-title">Logo</h2>
+            <p class="field-hint">Defaults to the IndianOil logo. Upload to override.</p>
             <div class="logo-upload-area">
               <div class="logo-preview" id="logoPreview">
                 <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="1.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
@@ -115,62 +86,9 @@
             </div>
           </div>
 
-          <!-- Invoice Details -->
+          <!-- Product Details -->
           <div class="section">
-            <h2 class="section-title">Invoice Details</h2>
-            <div class="form-row">
-              <div class="form-group">
-                <label for="invoiceNumber">Invoice Number</label>
-                <input type="text" id="invoiceNumber" class="form-input" placeholder="INV-001" value="INV-2024-001">
-              </div>
-              <div class="form-group">
-                <label for="paymentMethod">Payment Method <span class="req">*</span></label>
-                <select id="paymentMethod" class="form-input">
-                  <option value="Cash">Cash</option>
-                  <option value="Card">Card</option>
-                  <option value="UPI">UPI</option>
-                  <option value="Net Banking">Net Banking</option>
-                  <option value="Credit">Credit</option>
-                </select>
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="taxType">Tax Type</label>
-              <select id="taxType" class="form-input">
-                <option value="None">None</option>
-                <option value="GST">GST</option>
-                <option value="VAT">VAT</option>
-              </select>
-            </div>
-            <div class="form-row" id="taxRows">
-              <div class="form-group">
-                <label for="gstTin">GST TIN</label>
-                <input type="text" id="gstTin" class="form-input" placeholder="GST TIN" value="27AABCU9603R1ZV">
-              </div>
-              <div class="form-group">
-                <label for="cstTin">CST TIN</label>
-                <input type="text" id="cstTin" class="form-input" placeholder="CST TIN" value="CST/12345">
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="txnNo">TXN NO</label>
-              <input type="text" id="txnNo" class="form-input" placeholder="Transaction number" value="TXN987654321">
-            </div>
-          </div>
-
-          <!-- IndianOil Receipt Details (used by Template 7) -->
-          <div class="section">
-            <h2 class="section-title">Receipt Details (IndianOil Template)</h2>
-            <div class="form-row">
-              <div class="form-group">
-                <label for="receiptNo">Receipt No</label>
-                <input type="text" id="receiptNo" class="form-input" placeholder="e.g. J1670" value="J1670">
-              </div>
-              <div class="form-group">
-                <label for="localId">Local ID</label>
-                <input type="text" id="localId" class="form-input" placeholder="e.g. 00024735" value="00024735">
-              </div>
-            </div>
+            <h2 class="section-title">Product Details</h2>
             <div class="form-row">
               <div class="form-group">
                 <label for="product">Product</label>
@@ -181,98 +99,72 @@
                 <input type="text" id="density" class="form-input" placeholder="e.g. 114.0Kg/Cu.mtr" value="114.0Kg/Cu.mtr">
               </div>
             </div>
-            <div class="form-row">
-              <div class="form-group">
-                <label for="presetType">Preset Type</label>
-                <input type="text" id="presetType" class="form-input" placeholder="e.g. Amount" value="Amount">
-              </div>
-              <div class="form-group">
-                <label for="mobileNo">Mobile No</label>
-                <input type="text" id="mobileNo" class="form-input" placeholder="e.g. Not Enterd" value="Not Enterd">
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="form-group">
-                <label for="lstNo">LST No</label>
-                <input type="text" id="lstNo" class="form-input" placeholder="LST number" value="">
-              </div>
-              <div class="form-group">
-                <label for="vatNo">VAT No</label>
-                <input type="text" id="vatNo" class="form-input" placeholder="e.g. 2710701590" value="2710701590">
-              </div>
+            <div class="form-group">
+              <label for="presetType">Preset Type</label>
+              <input type="text" id="presetType" class="form-input" placeholder="e.g. Amount" value="Amount">
             </div>
           </div>
 
-          <!-- Fuel & Amount Details -->
+          <!-- Amount Details -->
           <div class="section">
-            <h2 class="section-title">Fuel &amp; Amount Details</h2>
-            <div class="form-group">
-              <label for="currency">Currency</label>
-              <select id="currency" class="form-input">
-                <option value="₹">Indian Rupee - ₹</option>
-                <option value="$">US Dollar - $</option>
-                <option value="€">Euro - €</option>
-              </select>
-            </div>
+            <h2 class="section-title">Amount Details</h2>
             <div class="form-row">
               <div class="form-group">
-                <label for="fuelRate">Fuel Rate (per L) <span class="req">*</span></label>
-                <input type="number" step="0.01" id="fuelRate" class="form-input" placeholder="Rate per litre" value="104.76">
+                <label for="fuelRate">Rate <span class="req">*</span></label>
+                <input type="number" step="0.01" id="fuelRate" class="form-input" placeholder="e.g. 80.33" value="80.33">
               </div>
               <div class="form-group">
-                <label for="fuelQty">Quantity (Ltrs)</label>
-                <input type="number" step="0.01" id="fuelQty" class="form-input" placeholder="Litres" value="5.73">
+                <label for="fuelQty">Volume (Ltrs)</label>
+                <input type="number" step="0.01" id="fuelQty" class="form-input" placeholder="e.g. 24.90" value="24.90">
               </div>
             </div>
             <div class="form-group">
-              <label for="totalAmount">Total Amount <span class="req">*</span></label>
-              <input type="number" step="0.01" id="totalAmount" class="form-input" placeholder="Total amount" value="600.00">
+              <label for="totalAmount">Total <span class="req">*</span></label>
+              <input type="number" step="0.01" id="totalAmount" class="form-input" placeholder="e.g. 2000.00" value="2000.00">
             </div>
             <div class="form-row">
               <div class="form-group">
-                <label for="billDate">Fuel Bill Date <span class="req">*</span></label>
+                <label for="billDate">Date <span class="req">*</span></label>
                 <input type="date" id="billDate" class="form-input">
               </div>
               <div class="form-group">
-                <label for="billTime">Fuel Bill Time</label>
-                <input type="time" id="billTime" class="form-input" value="10:30">
+                <label for="billTime">Time</label>
+                <input type="time" id="billTime" class="form-input" value="09:48">
               </div>
-            </div>
-            <div class="form-group">
-              <label for="fuelType">Fuel Type</label>
-              <select id="fuelType" class="form-input">
-                <option value="Petrol">Petrol</option>
-                <option value="Diesel">Diesel</option>
-                <option value="CNG">CNG</option>
-                <option value="EV Charging">EV Charging</option>
-              </select>
             </div>
           </div>
 
-          <!-- Customer & Vehicle Details -->
+          <!-- Vehicle & Customer -->
           <div class="section">
-            <h2 class="section-title">Customer &amp; Vehicle Details</h2>
-            <div class="form-group">
-              <label for="customerName">Customer Name <span class="req">*</span></label>
-              <input type="text" id="customerName" class="form-input" placeholder="Customer name" value="Rajesh Kumar">
-            </div>
+            <h2 class="section-title">Vehicle &amp; Customer</h2>
             <div class="form-row">
               <div class="form-group">
-                <label for="vehicleNumber">Vehicle Number <span class="req">*</span></label>
-                <input type="text" id="vehicleNumber" class="form-input" placeholder="e.g. MH-01-AB-1234" value="MH-01-AB-1234">
+                <label for="vehicleNumber">Vehicle No.</label>
+                <input type="text" id="vehicleNumber" class="form-input" placeholder="e.g. Not Enterd" value="Not Enterd">
               </div>
               <div class="form-group">
-                <label for="vehicleType">Vehicle Type <span class="req">*</span></label>
-                <select id="vehicleType" class="form-input">
-                  <option value="Car">Car</option>
-                  <option value="Bike">Bike</option>
-                  <option value="Scooter">Scooter</option>
-                  <option value="Truck">Truck</option>
-                  <option value="Bus">Bus</option>
-                  <option value="Auto">Auto</option>
-                  <option value="Other">Other</option>
-                </select>
+                <label for="mobileNo">Mobile No.</label>
+                <input type="text" id="mobileNo" class="form-input" placeholder="e.g. Not Enterd" value="Not Enterd">
               </div>
+            </div>
+          </div>
+
+          <!-- Tax IDs -->
+          <div class="section">
+            <h2 class="section-title">Tax IDs</h2>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="cstTin">CST No.</label>
+                <input type="text" id="cstTin" class="form-input" placeholder="CST number" value="">
+              </div>
+              <div class="form-group">
+                <label for="lstNo">LST No.</label>
+                <input type="text" id="lstNo" class="form-input" placeholder="LST number" value="">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="vatNo">VAT No.</label>
+              <input type="text" id="vatNo" class="form-input" placeholder="e.g. 2710701590" value="2710701590">
             </div>
           </div>
 
@@ -281,7 +173,7 @@
             <h2 class="section-title">Download Settings</h2>
             <div class="form-group">
               <label for="downloadFileName">Download File Name</label>
-              <input type="text" id="downloadFileName" class="form-input" placeholder="File name (without extension)" value="Fuel-Bill-Receipt">
+              <input type="text" id="downloadFileName" class="form-input" placeholder="File name (without extension)" value="IndianOil-Fuel-Bill">
             </div>
           </div>
 
@@ -331,8 +223,8 @@
 
   <footer class="footer">
     <div class="footer-inner">
-      <p>&copy; 2026 BillGenerator. All rights reserved.</p>
-      <p>Built for GitHub Pages &middot; Clone of BillGenerator.in</p>
+      <p>&copy; 2026 IndianOil Bill Generator.</p>
+      <p>Built for GitHub Pages</p>
     </div>
   </footer>
 
