@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fuel Bill Generator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="8" fill="#2563eb"/><path d="M10 22V10h4l4 6 4-6h4v12h-4V16l-4 6-4-6v6h-4z" fill="#fff"/></svg>
+        <span>BillGenerator</span>
+      </a>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="fuel.html" class="active">Fuel Bill</a>
+        <a href="maintenance.html">Maintenance Bill</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main">
+    <div class="app-container">
+      <div class="app-layout">
+
+        <!-- LEFT: Form -->
+        <section class="form-panel">
+          <h1 class="page-title">Fuel Bill Generator</h1>
+          <p class="page-subtitle">Generate professional fuel receipts and petrol bills</p>
+
+          <!-- Station Details -->
+          <div class="section">
+            <h2 class="section-title">Station Details</h2>
+            <div class="form-group">
+              <label for="stationName">Station / Dealer Name <span class="req">*</span></label>
+              <input type="text" id="stationName" class="form-input" placeholder="e.g. GURUPRASAD SERVICES" value="GURUPRASAD SERVICES">
+            </div>
+            <div class="form-group">
+              <label for="stationAddress">Station Address <span class="req">*</span></label>
+              <textarea id="stationAddress" class="form-input form-textarea" rows="2" placeholder="e.g. S V ROAD MALAD&#10;W-MUMBAI 64">S V ROAD MALAD
+W-MUMBAI 64</textarea>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="telNo">Tel. No.</label>
+                <input type="text" id="telNo" class="form-input" placeholder="e.g. 28805142" value="28805142">
+              </div>
+              <div class="form-group">
+                <label for="receiptNo">Receipt No.</label>
+                <input type="text" id="receiptNo" class="form-input" placeholder="e.g. J1670" value="J1670">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="localId">Local ID</label>
+                <input type="text" id="localId" class="form-input" placeholder="e.g. 00024735" value="00024735">
+              </div>
+              <div class="form-group">
+                <label for="fipNo">FIP No.</label>
+                <input type="text" id="fipNo" class="form-input" placeholder="e.g. 07" value="07">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="nozzleNo">Nozzle No.</label>
+              <input type="text" id="nozzleNo" class="form-input" placeholder="e.g. 03" value="03">
+            </div>
+          </div>
+
+          <!-- Logo -->
+          <div class="section">
+            <h2 class="section-title">Logo</h2>
+            <p class="field-hint">Defaults to the IndianOil logo. Upload to override.</p>
+            <div class="logo-upload-area">
+              <div class="logo-preview" id="logoPreview">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="1.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                <span>Upload Logo</span>
+              </div>
+              <input type="file" id="logoInput" accept="image/*" hidden>
+              <div class="logo-actions">
+                <button class="btn btn-sm btn-outline" id="uploadLogoBtn">Upload from Device</button>
+                <button class="btn btn-sm btn-ghost" id="clearLogoBtn">Clear</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product Details -->
+          <div class="section">
+            <h2 class="section-title">Product Details</h2>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="product">Product</label>
+                <input type="text" id="product" class="form-input" placeholder="e.g. Xtra Prem" value="Xtra Prem">
+              </div>
+              <div class="form-group">
+                <label for="density">Density</label>
+                <input type="text" id="density" class="form-input" placeholder="e.g. 114.0Kg/Cu.mtr" value="114.0Kg/Cu.mtr">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="presetType">Preset Type</label>
+              <input type="text" id="presetType" class="form-input" placeholder="e.g. Amount" value="Amount">
+            </div>
+          </div>
+
+          <!-- Amount Details -->
+          <div class="section">
+            <h2 class="section-title">Amount Details</h2>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="fuelRate">Rate <span class="req">*</span></label>
+                <input type="number" step="0.01" id="fuelRate" class="form-input" placeholder="e.g. 80.33" value="80.33">
+              </div>
+              <div class="form-group">
+                <label for="fuelQty">Volume (Ltrs)</label>
+                <input type="number" step="0.01" id="fuelQty" class="form-input" placeholder="e.g. 24.90" value="24.90">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="totalAmount">Total <span class="req">*</span></label>
+              <input type="number" step="0.01" id="totalAmount" class="form-input" placeholder="e.g. 2000.00" value="2000.00">
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="billDate">Date <span class="req">*</span></label>
+                <input type="date" id="billDate" class="form-input">
+              </div>
+              <div class="form-group">
+                <label for="billTime">Time</label>
+                <input type="time" id="billTime" class="form-input" value="09:48">
+              </div>
+            </div>
+          </div>
+
+          <!-- Vehicle & Customer -->
+          <div class="section">
+            <h2 class="section-title">Vehicle &amp; Customer</h2>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="vehicleNumber">Vehicle No.</label>
+                <input type="text" id="vehicleNumber" class="form-input" placeholder="e.g. Not Enterd" value="Not Enterd">
+              </div>
+              <div class="form-group">
+                <label for="mobileNo">Mobile No.</label>
+                <input type="text" id="mobileNo" class="form-input" placeholder="e.g. Not Enterd" value="Not Enterd">
+              </div>
+            </div>
+          </div>
+
+          <!-- Tax IDs -->
+          <div class="section">
+            <h2 class="section-title">Tax IDs</h2>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="cstTin">CST No.</label>
+                <input type="text" id="cstTin" class="form-input" placeholder="CST number" value="">
+              </div>
+              <div class="form-group">
+                <label for="lstNo">LST No.</label>
+                <input type="text" id="lstNo" class="form-input" placeholder="LST number" value="">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="vatNo">VAT No.</label>
+              <input type="text" id="vatNo" class="form-input" placeholder="e.g. 2710701590" value="2710701590">
+            </div>
+          </div>
+
+          <!-- Download Settings -->
+          <div class="section">
+            <h2 class="section-title">Download Settings</h2>
+            <div class="form-group">
+              <label for="downloadFileName">Download File Name</label>
+              <input type="text" id="downloadFileName" class="form-input" placeholder="File name (without extension)" value="IndianOil-Fuel-Bill">
+            </div>
+          </div>
+
+          <!-- Download Button -->
+          <div class="form-actions">
+            <button class="btn btn-primary btn-lg" id="downloadBtn">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              Download PDF
+            </button>
+          </div>
+        </section>
+
+        <!-- RIGHT: Preview -->
+        <aside class="preview-panel">
+          <div class="preview-header">
+            <h2>Live Preview</h2>
+            <span class="preview-badge">Preview</span>
+          </div>
+          <div class="preview-container" id="previewContainer">
+            <div class="preview-watermark">Preview Only</div>
+            <div class="bill-preview" id="billPreview">
+              <!-- Rendered by JS -->
+            </div>
+          </div>
+          <p class="preview-note">Watermark will be removed from downloaded PDF</p>
+          <button class="btn btn-outline btn-sm preview-expand" id="expandPreviewBtn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>
+            Fullscreen
+          </button>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <!-- Fullscreen Preview Modal -->
+  <div class="modal-overlay" id="previewModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Bill Preview</h2>
+        <button class="btn btn-ghost btn-sm" id="closeModalBtn">&times;</button>
+      </div>
+      <div class="modal-body" id="modalBody">
+        <!-- Cloned preview -->
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <p>&copy; 2026 BillGenerator. All rights reserved.</p>
+      <p>Built for GitHub Pages</p>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="fuel.js"></script>
+</body>
+</html>
