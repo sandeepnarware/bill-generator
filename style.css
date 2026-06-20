@@ -552,17 +552,79 @@ select.form-input { appearance: auto; }
 /* ===== Template 7: IndianOil Receipt (exact-match thermal printout) ===== */
 .bill-t7 {
   font-family: 'Courier New', Courier, monospace;
-  padding: 8px;
+  padding: 24px 18px;
   color: #111;
+  /* dark surface, like the photographed receipt */
+  background: #161616;
+  background-image: radial-gradient(circle at 50% 40%, #232323 0%, #121212 100%);
 }
 .bill-t7 .bill-inner {
+  position: relative;
   max-width: 320px;
   margin: 0 auto;
-  padding: 16px 20px 20px;
-  background: #fff;
+  padding: 16px 26px 22px;
+  /* aged thermal paper */
+  background: #f5f3ec;
+  background-image: linear-gradient(180deg, #f7f5ef 0%, #f1eee5 100%);
+  overflow: hidden;
+  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.55);
   font-weight: 700;
   letter-spacing: 0.2px;
 }
+.bill-t7 .t7-content { position: relative; z-index: 2; }
+
+/* Faint blue "HDFC BANK" watermark columns down both edges */
+.bill-t7 .t7-wm {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.55;
+}
+.bill-t7 .t7-wm-left { left: -3px; }
+.bill-t7 .t7-wm-right { right: -3px; }
+.bill-t7 .t7-hdfc {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  transform: rotate(90deg);
+  white-space: nowrap;
+}
+.bill-t7 .t7-hdfc-logo {
+  width: 11px;
+  height: 11px;
+  background: #2f4ea1;
+  border-radius: 1px;
+  flex-shrink: 0;
+}
+.bill-t7 .t7-hdfc-text {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: #5b76b8;
+}
+/* Edge production marks like the photo */
+.bill-t7 .t7-corner {
+  position: absolute;
+  right: 4px;
+  z-index: 1;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 9px;
+  letter-spacing: 1px;
+  color: #b7bcc4;
+  transform: rotate(90deg);
+  transform-origin: right center;
+  pointer-events: none;
+}
+.bill-t7 .t7-corner-tr { top: 70px; }
+.bill-t7 .t7-corner-br { bottom: 70px; }
 .bill-t7 .t7-logo { text-align: center; margin-bottom: 2px; }
 .bill-t7 .t7-emblem {
   width: 64px;

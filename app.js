@@ -380,8 +380,15 @@ function renderTemplate7(d) {
     .filter(Boolean);
   const row = (label, value) =>
     `<div class="t7-row"><span class="t7-label">${label}</span><span class="t7-colon">:</span><span class="t7-val">${value || ''}</span></div>`;
+  const hdfc = `<div class="t7-hdfc"><span class="t7-hdfc-logo"></span><span class="t7-hdfc-text">HDFC BANK</span></div>`;
+  const wmCol = hdfc + hdfc + hdfc;
   return `<div class="bill bill-t7">
     <div class="bill-inner">
+      <div class="t7-wm t7-wm-left" aria-hidden="true">${wmCol}</div>
+      <div class="t7-wm t7-wm-right" aria-hidden="true">${wmCol}</div>
+      <div class="t7-corner t7-corner-tr" aria-hidden="true">G - 5000</div>
+      <div class="t7-corner t7-corner-br" aria-hidden="true">G - 5000</div>
+      <div class="t7-content">
       <div class="t7-logo">
         ${d.logo
           ? `<img src="${d.logo}" class="t7-logo-img" alt="logo">`
@@ -415,6 +422,7 @@ function renderTemplate7(d) {
       ${row('LST NO', d.lstNo)}
       ${row('VAT NO', d.vatNo)}
       <div class="t7-thanks">Thank You! Please Visit Again..</div>
+      </div>
     </div>
   </div>`;
 }
