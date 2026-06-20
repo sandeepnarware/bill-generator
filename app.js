@@ -390,16 +390,7 @@ function renderTemplate7(d) {
       <div class="t7-corner t7-corner-br" aria-hidden="true">G - 5000</div>
       <div class="t7-content">
       <div class="t7-logo">
-        ${d.logo
-          ? `<img src="${d.logo}" class="t7-logo-img" alt="logo">`
-          : `<div class="t7-emblem">
-              <svg class="t7-flame" viewBox="0 0 64 64" aria-hidden="true">
-                <path d="M32 4 C 34 16 46 22 46 38 C 46 50 40 58 32 58 C 24 58 18 50 18 39 C 18 30 24 27 26 19 C 28 25 31 26 31 22 C 31 16 31 10 32 4 Z" fill="#f26f21"/>
-                <path d="M32 30 C 33 37 39 40 39 46 C 39 51 36 55 32 55 C 28 55 25 51 25 46 C 25 41 29 39 30 34 C 31 37 32 37 32 34 Z" fill="#fbb040"/>
-              </svg>
-              <span class="t7-emblem-text">इंडियनऑयल</span>
-            </div>`}
-        <div class="t7-brand">IndianOil</div>
+        <img src="${d.logo || 'assets/indianoil-logo.png'}" class="t7-logo-img" alt="IndianOil">
       </div>
       <div class="t7-welcome">Welcomes You</div>
       <div class="t7-dealer">${dealer}</div>

@@ -7,7 +7,10 @@
       "Read(//c/Program Files \\(x86\\)/Microsoft/Edge/Application/**)",
       "Bash(npm ls *)",
       "Bash(cat > *)",
-      "Bash(python -)"
+      "Bash(python -)",
+      "WebSearch",
+      "Bash(curl -sL -A \"Mozilla/5.0\" \"https://www.logo.wine/a/logo/Indian_Oil_Corporation/Indian_Oil_Corporation-Logo.wine.svg\" -o iol1.svg -w \"%{http_code} %{content_type}\\\\n\")",
+      "Bash(wc -c iol1.svg)"
     ],
     "additionalDirectories": [
       "D:\\system-temp\\claude\\d--pet-projects-bill-generator\\2c962a5b-86a6-4847-8f50-bd7d712e5336\\scratchpad"
